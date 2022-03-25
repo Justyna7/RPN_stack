@@ -18,7 +18,7 @@ import java.lang.String;
 public class Stack {
     private String stos[] = new String[0];
     public void  push(String s){
-
+        this.stos = new String[this.len()+1];
     }
     public String pop(){
         return "";
@@ -27,6 +27,6 @@ public class Stack {
         return "";
     }
     public int len(){
-        return 0;
+        return this.stos.length;
     }
 }
