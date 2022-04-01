@@ -18,8 +18,9 @@ import java.lang.String;
 public class Stack {
     private String stos[] = new String[0];
     public void  push(String s){
-        this.stos = new String[this.len()+1];
-        this.stos[0] = s;
+        int l = this.len();
+        this.stos = new String[l+1];
+        this.stos[l] = s;
 
     }
     public String pop(){
