@@ -19,8 +19,10 @@ public class Stack {
     private String stos[] = new String[0];
     public void  push(String s){
         int l = this.len();
-        this.stos = new String[l+1];
-        this.stos[l] = s;
+        String[] stos = new String[l+1];
+        if (l >= 0) System.arraycopy(this.stos, 0, stos, 0, l);
+        stos[l] = s;
+        this.stos = stos;
 
     }
     public String pop(){
