@@ -78,4 +78,16 @@ public class StackTest {
         // Assert
         assertEquals("sut.pop()", 1, sut.len());
     }
+    @Test
+    public void testTakeOne3() {
+        // Arrange
+        // sut = System Under Test
+        Stack sut = new Stack();
+        // Act
+        sut.push("ala");
+        sut.push("xxxx");
+        sut.pop();
+        // Assert
+        assertEquals("sut.pop()", "ala", sut.peek());
+    }
 }
