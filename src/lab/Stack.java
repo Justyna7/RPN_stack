@@ -29,8 +29,9 @@ public class Stack {
         int l = this.len();
         String[] stos = new String[l-1];
         if (l >= 0) System.arraycopy(this.stos, 0, stos, 0, l-1);
+        String p = this.peek();
         this.stos = stos;
-        return "";
+        return p;
     }
     public String peek(){
         return this.stos[this.len() - 1];
