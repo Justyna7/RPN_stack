@@ -19,18 +19,19 @@ public class Stack {
     private String stos[] = new String[0];
     public void  push(String s){
         this.stos = new String[this.len()+1];
+        this.stos[0] = s;
 
     }
     public String pop(){
         return "";
     }
     public String peek(){
-        return "";
+        return this.stos[this.len() - 1];
     }
     public int len(){
         return this.stos.length;
     }
     public String[] all(){
-        return new String[0];
+        return this.stos;
     }
 }
