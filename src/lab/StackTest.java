@@ -15,6 +15,15 @@ public class StackTest {
         assertEquals("sut.len()", 0, sut.len());
     }
     @Test
+    public void testEmpty2() {
+        // Arrange
+        // sut = System Under Test
+        Stack sut = new Stack();
+        // Act
+        // Assert
+        assertEquals("sut.peek()", "", sut.peek());
+    }
+    @Test
     public void testAddOne() {
         // Arrange
         // sut = System Under Test
