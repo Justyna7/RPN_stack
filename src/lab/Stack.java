@@ -34,6 +34,9 @@ public class Stack {
         return p;
     }
     public String peek(){
+        if (this.len() == 0){
+            return "";
+        }
         return this.stos[this.len() - 1];
     }
     public int len(){
