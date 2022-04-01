@@ -35,6 +35,28 @@ public class StackTest {
         assertEquals("sut.push(\"ala\")", 1, sut.len());
     }
     @Test
+    public void testAddOne3() {
+        // Arrange
+        // sut = System Under Test
+        Stack sut = new Stack();
+        // Act
+        sut.push("ala");
+        sut.push("zosia");
+        // Assert
+        assertEquals("sut.all()", "ala", sut.all()[0]);
+    }
+    @Test
+    public void testAddOne4() {
+        // Arrange
+        // sut = System Under Test
+        Stack sut = new Stack();
+        // Act
+        sut.push("ala");
+        sut.push("zosia");
+        // Assert
+        assertEquals("sut.all()", "zosia", sut.all()[1]);
+    }
+    @Test
     public void testTakeOne() {
         // Arrange
         // sut = System Under Test

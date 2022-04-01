@@ -19,6 +19,7 @@ public class Stack {
     private String stos[] = new String[0];
     public void  push(String s){
         this.stos = new String[this.len()+1];
+
     }
     public String pop(){
         return "";
@@ -28,5 +29,8 @@ public class Stack {
     }
     public int len(){
         return this.stos.length;
+    }
+    public String[] all(){
+        return new String[0];
     }
 }
