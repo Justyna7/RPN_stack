@@ -21,6 +21,7 @@ public class Rpn {
 //        int cc = c;
        // System.out.println(""+ aa+ " "+ bb+ " " + cc + " ");
         int l2 = 0;
+        String liczba = "";
         for (int i = 0; i<l; i++){
             String s1 = s.substring(i, i+1);
             //System.out.println(""+ i + " " + s.charAt(i)+ " " + (!s1.equals(" ")));
@@ -45,9 +46,13 @@ public class Rpn {
                 case "-":
                     int a_ = Character.getNumericValue(this.stos.pop().charAt(0));
                     int b_ = Character.getNumericValue(this.stos.pop().charAt(0));
-                    //System.out.println(""+ a + " " + b+ " " + (a+b));
                     this.stos.push(""+(b_-a_));
-                    //System.out.println(""+ a + " " + b+ " " + (a+b) + " " + this.stos.peek()+ " "+ Character.getNumericValue(this.stos.peek().charAt(0)));
+                    t = false;
+                    break;
+                case "*":
+                    int a2 = Character.getNumericValue(this.stos.pop().charAt(0));
+                    int b2 = Character.getNumericValue(this.stos.pop().charAt(0));
+                    this.stos.push(""+(a2*b2));
                     t = false;
                     break;
                 default:
@@ -56,7 +61,7 @@ public class Rpn {
             }
             //System.out.println(""+ this.s + " " + this.stos.peek());
         }
-        return Character.getNumericValue(this.stos.peek().charAt(0));
+        return Integer.parseInt(String.valueOf(this.stos.peek()));
     }
 
 }
