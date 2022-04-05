@@ -42,6 +42,14 @@ public class Rpn {
                     System.out.println(""+ a + " " + b+ " " + (a+b) + " " + this.stos.peek()+ " "+ Character.getNumericValue(this.stos.peek().charAt(0)));
                     t = false;
                     break;
+                case "-":
+                    int a_ = Character.getNumericValue(this.stos.pop().charAt(0));
+                    int b_ = Character.getNumericValue(this.stos.pop().charAt(0));
+                    //System.out.println(""+ a + " " + b+ " " + (a+b));
+                    this.stos.push(""+(b_-a_));
+                    //System.out.println(""+ a + " " + b+ " " + (a+b) + " " + this.stos.peek()+ " "+ Character.getNumericValue(this.stos.peek().charAt(0)));
+                    t = false;
+                    break;
                 default:
                     this.stos.push(s1);
                     t = false;
