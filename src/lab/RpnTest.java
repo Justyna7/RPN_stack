@@ -75,6 +75,32 @@ public class RpnTest {
         // Assert
         assertEquals("sut.compute()", 13, sut.compute());
     }
-
+    @Test
+    public void testMultipleOperations2() {
+        // Arrange
+        // sut = System Under Test
+        Rpn sut = new Rpn("12 4 - 5 2 * +");
+        // Act
+        // Assert
+        assertEquals("sut.compute()", 18, sut.compute());
+    }
+    @Test
+    public void testMultipleOperations3() {
+        // Arrange
+        // sut = System Under Test
+        Rpn sut = new Rpn("20 5 7 + -");
+        // Act
+        // Assert
+        assertEquals("sut.compute()", 8, sut.compute());
+    }
+    @Test
+    public void testMultipleOperations4() {
+        // Arrange
+        // sut = System Under Test
+        Rpn sut = new Rpn("2 12 4 - * 5 +");
+        // Act
+        // Assert
+        assertEquals("sut.compute()", 21, sut.compute());
+    }
 
 }
