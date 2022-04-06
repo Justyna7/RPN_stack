@@ -49,22 +49,22 @@ public class Rpn {
             String s1 = this.stos.pop();
             switch (s1){
                 case "+":
-                    int a = Character.getNumericValue(this.stos.pop().charAt(0));
-                    int b = Character.getNumericValue(this.stos.pop().charAt(0));
+                    int a = Integer.parseInt(String.valueOf(this.stos.pop()));
+                    int b = Integer.parseInt(String.valueOf(this.stos.pop()));
                     //System.out.println(""+ a + " " + b+ " " + (a+b));
                     this.stos.push(""+(a + b));
                     System.out.println(""+ a + " " + b+ " " + (a+b) + " " + this.stos.peek()+ " "+ Character.getNumericValue(this.stos.peek().charAt(0)));
                     t = false;
                     break;
                 case "-":
-                    int a_ = Character.getNumericValue(this.stos.pop().charAt(0));
-                    int b_ = Character.getNumericValue(this.stos.pop().charAt(0));
+                    int a_ = Integer.parseInt(String.valueOf(this.stos.pop()));
+                    int b_ = Integer.parseInt(String.valueOf(this.stos.pop()));
                     this.stos.push(""+(b_-a_));
                     t = false;
                     break;
                 case "*":
-                    int a2 = Character.getNumericValue(this.stos.pop().charAt(0));
-                    int b2 = Character.getNumericValue(this.stos.pop().charAt(0));
+                    int a2 = Integer.parseInt(String.valueOf(this.stos.pop()));//Character.getNumericValue(
+                    int b2 = Integer.parseInt(String.valueOf(this.stos.pop()));
                     this.stos.push(""+(a2*b2));
                     t = false;
                     break;
