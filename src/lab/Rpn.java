@@ -25,6 +25,7 @@ public class Rpn {
         for (int i = 0; i<l; i++){
             String s1 = s.substring(i, i+1);
             //System.out.println(""+ i + " " + s.charAt(i)+ " " + (!s1.equals(" ")));
+
             if (!s1.equals(" ")){
                 this.stos.push(s1);
                 l2 = l2 +1;

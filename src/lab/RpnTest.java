@@ -58,6 +58,15 @@ public class RpnTest {
         assertEquals("sut.compute()", 8, sut.compute());
     }
     @Test
+    public void testLongNumbers2() {
+        // Arrange
+        // sut = System Under Test
+        Rpn sut = new Rpn("32");
+        // Act
+        // Assert
+        assertEquals("sut.compute()", 32, sut.compute());
+    }
+    @Test
     public void testMultipleOperations() {
         // Arrange
         // sut = System Under Test
