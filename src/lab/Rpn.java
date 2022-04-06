@@ -13,25 +13,37 @@ public class Rpn {
     }
     public int compute(){
         int l = this.s.length();
-//        char a = '0';
-//        char b = '1';
-//        char c = '9';
-//        int aa = a;
-//        int bb = b;
-//        int cc = c;
-       // System.out.println(""+ aa+ " "+ bb+ " " + cc + " ");
+//        char a1 = '0';
+//        char b1 = '1';
+//        char c1 = '9';
+//        int aa = a1;
+//        int bb = b1;
+//        int cc = c1;
+//       System.out.println(""+ aa+ " "+ bb+ " " + cc + " ");//0:48, 9:57
         int l2 = 0;
         String liczba = "";
         for (int i = 0; i<l; i++){
             String s1 = s.substring(i, i+1);
             //System.out.println(""+ i + " " + s.charAt(i)+ " " + (!s1.equals(" ")));
-
-            if (!s1.equals(" ")){
-                this.stos.push(s1);
-                l2 = l2 +1;
+            switch (s1){
+                case " ":
+                    if (!liczba.equals("")){
+                        this.stos.push(liczba);
+                        liczba = "";
+                    }
+                    break;
+                default:
+                    liczba = liczba+s1;
             }
-        System.out.println(""+ this.s + " " + this.stos.peek());
+
+//            if (!s1.equals(" ")){
+//
+//                this.stos.push(s1);
+//                l2 = l2 +1;
+//            }
+        System.out.println(""+ this.s + " " + this.stos.peek()+" "+liczba);
         }
+        this.stos.push(liczba);
         boolean t = true;
         while (t){
             String s1 = this.stos.pop();
