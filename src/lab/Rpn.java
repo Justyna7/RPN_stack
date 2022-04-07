@@ -4,126 +4,44 @@ import java.lang.String;
 
 public class Rpn {
     private final String s;
-    private Stack stos = new Stack();
-    private Stack stos_pom = new Stack();
+    private final Stack stos = new Stack();
     public Rpn(String s){
         this.s = s;
     }
     public String printRpn(){
         return this.s;
     }
+    private void calc(String c){
+        int a = Integer.parseInt(String.valueOf(this.stos.pop()));
+        int b = Integer.parseInt(String.valueOf(this.stos.pop()));
+        switch (c){
+            case "+" -> this.stos.push("" + (a + b));
+            case "-" -> this.stos.push("" + (b - a));
+            case "*" -> this.stos.push("" + (a * b));
+        }
+    }
     public int compute(){
         int l = this.s.length();
-//        char a1 = '0';
-//        char b1 = '1';
-//        char c1 = '9';
-//        int aa = a1;
-//        int bb = b1;
-//        int cc = c1;
-//       System.out.println(""+ aa+ " "+ bb+ " " + cc + " ");//0:48, 9:57
-        int l2 = 0;
-        String liczba = "";
+        StringBuilder liczba = new StringBuilder();
         for (int i = 0; i<l; i++){
             String s1 = s.substring(i, i+1);
-            //System.out.println(""+ i + " " + s.charAt(i)+ " " + (!s1.equals(" ")));
             switch (s1){
                 case " ":
-                    if (!liczba.equals("")){
-                        this.stos.push(liczba);
-                        liczba = "";
+                    if (!liczba.toString().equals("")){
+                        this.stos.push(liczba.toString());
+                        liczba = new StringBuilder();
                     }
                     break;
-                case "+" :
-                    int a = Integer.parseInt(String.valueOf(this.stos.pop()));
-                    int b = Integer.parseInt(String.valueOf(this.stos.pop()));
-                    //System.out.println(""+ a + " " + b+ " " + (a+b));
-                    this.stos.push("" + (a + b));
-                    System.out.println("" + a + " " + b + " " + (a + b) + " " + this.stos.peek() + " " + Character.getNumericValue(this.stos.peek().charAt(0)));
-                    //t = false;
-                    break;
+                case "+":
                 case "-":
-                    int a_ = Integer.parseInt(String.valueOf(this.stos.pop()));
-                    int b_ = Integer.parseInt(String.valueOf(this.stos.pop()));
-                    this.stos.push(""+(b_-a_));
-
-                    break;
                 case "*":
-                    int a2 = Integer.parseInt(String.valueOf(this.stos.pop()));//Character.getNumericValue(
-                    int b2 = Integer.parseInt(String.valueOf(this.stos.pop()));
-                    this.stos.push(""+(a2*b2));
-
+                    this.calc(s1);
                     break;
                 default:
-                    liczba = liczba+s1;
+                    liczba.append(s1);
             }
-
-//            if (!s1.equals(" ")){
-//
-//                this.stos.push(s1);
-//                l2 = l2 +1;
-//            }
-        System.out.println(""+ this.s + " " + this.stos.peek()+" "+liczba);
         }
-        if (!liczba.equals("")){this.stos.push(liczba);}
-//        boolean t = true;
-//        while (t){
-//            String s1 = this.stos.pop();
-//            switch (s1) {
-//                case "+" -> {
-//                    int a = Integer.parseInt(String.valueOf(this.stos.pop()));
-//                    int b = Integer.parseInt(String.valueOf(this.stos.pop()));
-//                    //System.out.println(""+ a + " " + b+ " " + (a+b));
-//                    this.stos.push("" + (a + b));
-//                    System.out.println("" + a + " " + b + " " + (a + b) + " " + this.stos.peek() + " " + Character.getNumericValue(this.stos.peek().charAt(0)));
-//                    t = false;
-//                }
-//                case "-" -> {
-//                    int a_ = Integer.parseInt(String.valueOf(this.stos.pop()));
-//                    int b_ = Integer.parseInt(String.valueOf(this.stos.pop()));
-//                    this.stos.push("" + (b_ - a_));
-//                    t = false;
-//                }
-//                case "*" -> {
-//                    int a2 = Integer.parseInt(String.valueOf(this.stos.pop()));//Character.getNumericValue(
-//                    int b2 = Integer.parseInt(String.valueOf(this.stos.pop()));
-//                    this.stos.push("" + (a2 * b2));
-//                    t = false;
-//                }
-//                default -> {
-//                    this.stos.push(s1);
-//                    t = false;
-//                }
-//            }
-//
-//            /*
-//            case "+":
-//                    int a = Integer.parseInt(String.valueOf(this.stos.pop()));
-//                    int b = Integer.parseInt(String.valueOf(this.stos.pop()));
-//                    //System.out.println(""+ a + " " + b+ " " + (a+b));
-//                    this.stos.push(""+(a + b));
-//                    System.out.println(""+ a + " " + b+ " " + (a+b) + " " + this.stos.peek()+ " "+ Character.getNumericValue(this.stos.peek().charAt(0)));
-//                    t = false;
-//                    break;
-//                case "-":
-//                    int a_ = Integer.parseInt(String.valueOf(this.stos.pop()));
-//                    int b_ = Integer.parseInt(String.valueOf(this.stos.pop()));
-//                    this.stos.push(""+(b_-a_));
-//                    t = false;
-//                    break;
-//                case "*":
-//                    int a2 = Integer.parseInt(String.valueOf(this.stos.pop()));//Character.getNumericValue(
-//                    int b2 = Integer.parseInt(String.valueOf(this.stos.pop()));
-//                    this.stos.push(""+(a2*b2));
-//                    t = false;
-//                    break;
-//                default:
-//                    this.stos.push(s1);
-//                    t = false;
-//             */
-//
-//
-//            //System.out.println(""+ this.s + " " + this.stos.peek());
-//        }
+        if (!liczba.toString().equals("")){this.stos.push(liczba.toString());}
         return Integer.parseInt(String.valueOf(this.stos.peek()));
     }
 

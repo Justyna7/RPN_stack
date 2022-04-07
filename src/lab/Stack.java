@@ -12,25 +12,24 @@ Stos nie powinien posiadać ograniczeń rozmiaru.
 
 package lab;
 
-import java.util.List;
 import java.lang.String;
 
 public class Stack {
-    private String stos[] = new String[0];
+    private String[] stos = new String[0];
+    private void change_size(int i, int j){
+        int l = this.len();
+        String[] stos = new String[l+i];
+        if (l >= 0) System.arraycopy(this.stos, 0, stos, 0, l+j);
+        this.stos = stos;
+    }
     public void  push(String s){
         int l = this.len();
-        String[] stos = new String[l+1];
-        if (l >= 0) System.arraycopy(this.stos, 0, stos, 0, l);
-        stos[l] = s;
-        this.stos = stos;
-
+        this.change_size(1, 0);
+        this.stos[l] = s;
     }
     public String pop(){
-        int l = this.len();
-        String[] stos = new String[l-1];
-        if (l >= 0) System.arraycopy(this.stos, 0, stos, 0, l-1);
         String p = this.peek();
-        this.stos = stos;
+        this.change_size(-1, -1);
         return p;
     }
     public String peek(){
