@@ -3,6 +3,7 @@
 package lab;
 import org.junit.*; //
 import static org.junit.Assert.assertEquals;//
+import static org.junit.Assert.assertThrows;
 
 public class StackTest {
     @Test
@@ -22,6 +23,17 @@ public class StackTest {
         // Act
         // Assert
         assertEquals("sut.peek()", "", sut.peek());
+    }
+    @Test
+    public void testEmpty3() {
+        // Arrange
+        // sut = System Under Test
+        Stack sut = new Stack();
+        // Act
+        // Assert
+        assertThrows(NegativeArraySizeException.class, () -> {
+            sut.pop();
+        });
     }
     @Test
     public void testAddOne() {

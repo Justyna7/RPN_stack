@@ -11,16 +11,14 @@ public class Rpn {
     public String printRpn(){
         return this.s;
     }
-    private void calc(String c){
-        int a = Integer.parseInt(String.valueOf(this.stos.pop()));
-        int b = Integer.parseInt(String.valueOf(this.stos.pop()));
-        switch (c){
-            case "+" -> this.stos.push("" + (a + b));
-            case "-" -> this.stos.push("" + (b - a));
-            case "*" -> this.stos.push("" + (a * b));
-        }
+    private void calc(String c) throws Exception {
+        String A = this.stos.pop();
+        String B = this.stos.pop();
+        Calculator x = new Calculator();
+        this.stos.push(String.valueOf(x.calculate(c,A,B)));
+
     }
-    public int compute(){
+    public int compute() throws Exception {
         int l = this.s.length();
         StringBuilder liczba = new StringBuilder();
         for (int i = 0; i<l; i++){
@@ -32,13 +30,20 @@ public class Rpn {
                         liczba = new StringBuilder();
                     }
                     break;
-                case "+":
-                case "-":
-                case "*":
-                    this.calc(s1);
+                case "0":
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                case "7":
+                case "8":
+                case "9":
+                    liczba.append(s1);
                     break;
                 default:
-                    liczba.append(s1);
+                    this.calc(s1);
             }
         }
         if (!liczba.toString().equals("")){this.stos.push(liczba.toString());}
